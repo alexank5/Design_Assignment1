@@ -1,0 +1,42 @@
+#include <project.h>
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+#include <stdint.h>
+
+#define PRT6_DR (0x40005160);
+#define NVIC_CPUID_BASE_ADDR (0XE000ED00);
+
+   uint32_t implementer;
+   uint32_t reg_val;
+   uint32_t partno;
+   uint32_t variant;
+   uint32_t revision ;
+
+int main()
+{
+  CyGloablIntEnable; /* Enable Global Interrupts*/
+  
+  unit32_t* volatile * my_reg_ptr;
+  //Line above declares a pointer to a volatile integer 
+  
+  //Declare the pointer to point to the register of interest 
+  my_reg_ptr = (uint32_t*)NVIC_CPUID_BASE_ADDR; 
+  
+  //Gather the values in the register 
+  reg_val= *my_reg_ptr 
+  
+  implementer = (reg_val>>24)& 0xFF
+  partno = (reg_val>>4)& 0xFFF
+  variant = (reg_val>>20)& 0xF
+  revision = (reg_val>>0)& 0xF
+
+ 
+ char myname[]= "Keith Alexander" //Store name to variable 
+
+
+ // Loop forever (do nothing, for this assignment)
+ for(;;)
+ {
+ }
+}
